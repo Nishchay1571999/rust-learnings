@@ -1,4 +1,4 @@
-use std::fmt::{self, write};
+use std::fmt::{self};
 
 
 
@@ -6,6 +6,17 @@ use std::fmt::{self, write};
 struct Person{
     name: String,
     age: u8
+}
+#[derive(Debug)]
+struct ComplexNumbers {
+    x:i32,
+    y:i32,
+}
+
+impl fmt::Display for ComplexNumbers {
+    fn fmt(&self, f:&mut fmt::Formatter) -> fmt::Result {
+        write!(f,"{} + {1}i",self.x,self.y)
+    }
 }
 
 impl fmt::Display for Person {
@@ -19,5 +30,9 @@ fn main() {
         age:24
     };
     println!("{}",person);
-
+    let complex = ComplexNumbers { 
+        x:10,
+        y:20
+    };
+    println!("{}",complex);
 }
